@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+		<meta name="description" content="Описание страницы">
+		<meta name="theme-color" content="#dcf4f7">
+		<meta name="format-detection" content="telephone=no">
+		<title>Modules</title>
+		<link rel="stylesheet" href="./css/main.css?v=1685716270310">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	</head>
+	<body>
+		<div class="site">
+			<!-- Header Start-->
+			<header class="header">
+				<div class="container">
+					<div class="header__wrapper"><a class="header__logo logo" href="/"><img class="logo__img" src="/logo.png" alt="logo" width="150" height="150"></a>
+						<button class="header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+						<nav class="header__menu">
+							<button class="header__menu-burger header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+							<ul class="header__lists">
+								<li class="header__list"><a class="header__link" href="/">Home</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Mission.html">Mission</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Writing-a-Module.html">Coding</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Modules.html">Modules Overview</a>
+								</li>
+								<li class="header__list"><a class="header__link is-active" href="/Modules.html">Modules</a>
+									<ul class="submenu">
+										<li class="submenu__list"><a class="submenu__link" href="/MSSQL.html">MSSQL</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/VMware.html">VMware</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/WMI.html">WMI</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/FileBrowse.html">FileBrowse</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/PerfMon.html">PerfMon</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/EventLog.html">EventLog</a></li>
+										<li class="submenu__list"><a class="submenu__link is-active" href="/Postgres.html">Postgres</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/MySQL.html">MySQL</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/AWS.html">AWS</a></li>
+									</ul>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Repos.html">Repos</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/News.html">News</a>
+								</li>
+							</ul>
+						</nav>
+						<div class="header__overlay"></div>
+					</div>
+				</div>
+			</header>
+			<!-- Header End-->
+			<!-- Main section-->
+			<main class="main">
+				<section class="main-page">
+					<div class="container">
+						<h1>
+							 Postgres</h1><br>
+						<p><a href="Download-Postgres.html">Download</a>          the module and modify&nbsp;<b>ROOT_PGstub.ps1</b>          - out of the box it lists just the current server. You will probably
+							          want to add more from one of the inventories. When connection strings
+							          contain passwords, it is recommended to write them in the following
+							          format: <i>###secretname###</i>, and the value for the secret is
+							          stored in config.js file and is not sent to a client (and can not be
+							          debugged using F12-console). Contribute more on <a href="https://github.com/tzimie/BellModules" target="_blank">Github.</a><br><br>          Powershell uses ODBC to connect to Postgres, so you need to have&nbsp;<b>psqlodbc_<span style="font-style: italic; font-weight: 400;">ver</span>-x64.zip</b> installed on a server.
+						</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/pg1.png" alt="pg1" width="1189" height="373"><br>
+						<p>
+							 At the top level, you have a few server-wide reports and a list of databases with their sizes. <br><br>At a database level, you get several performance charts (you have to wait 30 seconds or 10 seconds for each, the module builds charts by calculating deltas of the increasing cumulative values) and the "biggest tables" report.</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/pg2.png" alt="pg2" width="1825" height="713"><br>
+						<p>
+							 You can click on any stored procedure to inspect the source code:</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/pg3.png" alt="pg3" width="1011" height="513"><br><br><br>
+						<p>
+							 Finally, for every table you can get fragmentation and selectivity reports, and for tables with datetime columns distribution of the values by date (number of records per date):</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/pg4.png" alt="pg4" width="356" height="519"><br>
+						<p>
+							 The index coverage report lists all columns, covered by any index at least once. Leading column in an index is marked with '1', second with '2' etc. You can easily spot over-indexing and bad indexing.</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/PGindexing.png" alt="PGindexing" width="1078" height="275"><br>
+						<p><b>NEW:</b> TreeMap of table and index sizes in every database and on
+							          server at whole. <br>          Color represents: <br><b>&nbsp;&nbsp;Green</b> - table data <br><b>&nbsp;&nbsp;Yellow</b> - indexes
+						</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/dbdemop.png" alt="dbdemop" width="1120" height="619"><br>
+						<p><b>NEW:</b> TreeMap of table hits in every database and on server at whole. <br>Color represents cache hits ratio</p><br><img class="box-shadow mx-auto d-block h-auto" src="./images/content/postgrehits.png" alt="postgrehits" width="1120" height="623">
+					</div>
+				</section>
+			</main>
+			<!-- Main section End-->
+			<!-- Footer section-->
+			<footer class="footer">
+				<div class="container">
+					<p>We are inviting new contributors and <a href="#" target="_blank" rel="nofollow">module creators</a></p>
+				</div>
+			</footer>
+		</div>
+		<script>
+			if (!('IntersectionObserver' in window)) {
+				var script = document.createElement("script");
+				script.src = "https://raw.githubusercontent.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js";
+				document.getElementsByTagName('head')[0].appendChild(script);
+			}
+		</script>
+		<script src="./js/vendor.js?v=1685716270310"></script>
+		<script src="./js/main.js?v=1685716270310"></script>
+	</body>
+</html>

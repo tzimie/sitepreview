@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+		<meta name="description" content="Описание страницы">
+		<meta name="theme-color" content="#dcf4f7">
+		<meta name="format-detection" content="telephone=no">
+		<title>Modules</title>
+		<link rel="stylesheet" href="./css/main.css?v=1685716269631">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	</head>
+	<body>
+		<div class="site">
+			<!-- Header Start-->
+			<header class="header">
+				<div class="container">
+					<div class="header__wrapper"><a class="header__logo logo" href="/"><img class="logo__img" src="/logo.png" alt="logo" width="150" height="150"></a>
+						<button class="header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+						<nav class="header__menu">
+							<button class="header__menu-burger header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+							<ul class="header__lists">
+								<li class="header__list"><a class="header__link" href="/">Home</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Mission.html">Mission</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Writing-a-Module.html">Coding</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Modules.html">Modules Overview</a>
+								</li>
+								<li class="header__list"><a class="header__link is-active" href="/Modules.html">Modules</a>
+									<ul class="submenu">
+										<li class="submenu__list"><a class="submenu__link" href="/MSSQL.html">MSSQL</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/VMware.html">VMware</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/WMI.html">WMI</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/FileBrowse.html">FileBrowse</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/PerfMon.html">PerfMon</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/EventLog.html">EventLog</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/Postgres.html">Postgres</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/MySQL.html">MySQL</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/AWS.html">AWS</a></li>
+									</ul>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Repos.html">Repos</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/News.html">News</a>
+								</li>
+							</ul>
+						</nav>
+						<div class="header__overlay"></div>
+					</div>
+				</div>
+			</header>
+			<!-- Header End-->
+			<!-- Main section-->
+			<main class="main">
+				<section class="main-page">
+					<div class="container">
+						<h1>
+							 Modules</h1>
+						<p>
+							 We provide several modules "out of the box". You can use these modules as a starting point for your development. A few comments about the modules.</p>
+						<ul>
+							<li>
+								 Modules don't contain login.ext and audit.ext. These files are downloaded separately. We don't want your login and audit specifics be overwritten with our examples.</li>
+							<li>
+								 Scripts in the modules don't have any security, even though they get parameters $usr and $grp which they can analyze. It is up to you to define any security restrictions. Out-of-the box scripts work in the following manner: once you managed to log in, you can do everything, defined in scripts.</li>
+							<li>
+								 Finally, there are many different ways you can keep your inventory of servers: files, database tables, VMware inventories, AWS, etc. We don't know it, so in the modules there is a stub - it just lists a single server - itself, and it is up to you to add other servers from your data sources. So you should start from modification of the few files - such files have *stub* in their names.</li>
+						</ul>
+						<p>Start by downloading one of <b>login.ps1</b> files (or <b>.py</b> files):</p>
+						<ul> 
+							<li>
+								 <a href="https://actionatdistance.com/loginDummy.zip">loginDummy.zip</a> is a stub, it accepts any login with a password "root"</li>
+							<li>
+								 <a href="https://actionatdistance.com/loginAD.zip">loginAD.zip</a> checks user credentials in AD system, groups are always 'RO;RW'
+								<i>- not available for Python, Active Directory is "ToDo"</i>
+							</li>
+							<li>
+								 <a href="https://actionatdistance.com/loginADext.zip">loginADext.zip</a> checks what AD groups user belongs to, requires additional cmdlet Get-ADPrincipalGroupMembership to be installed on a server. Edit AD groups names - they are different in every company.
+								<i>- not available for Python, Active Directory is "ToDo"</i>
+							</li>
+						</ul>
+						<p>Next, download <b>audit.ps1</b> (or <b>.py</b> files) - again 3 different sample versions:</p>
+						<ul> 
+							<li>
+								 <a href="https://actionatdistance.com/auditNull.zip">auditNull.zip</a> - blank audit, does nothing</li>
+							<li>
+								 <a href="https://actionatdistance.com/auditFile.zip">auditFile.zip</a> - appends to <b>bell.log</b> in HOMEPATH of a service account used (may be you would like to change the directory?)</li>
+							<li>
+								 <a href="https://actionatdistance.com/auditTable.zip">auditTable.zip</a> - logs to a table (MSSQL). Replace the target server name and database name. Execute <b>audit.sql</b> before using to create an audit table and procedure
+								<i>- not available for Python - don't know what database you are going to use</i>
+							</li>
+						</ul>
+						<p>We already have the following modules ready:</p>
+						<ul> 
+							<li>
+								 <a href="MSSQL.html">MSSQL</a> - SQL server statistics and performance metrics</li>
+							<li>
+								 <a href="WMI.html">WMI</a> - Few useful functions available by WMI - drives, services etc</li>
+							<li>
+								 <a href="VMware.html">VMware</a> - Information from VMware directly from postgre database - inventories and statistics.</li>
+							<li>
+								 <a href="FileBrowse.html">FileBrowse</a> - browse log, txt, xml, config files on remote servers (Windows)</li>
+							<li>
+								 <a href="PerfMon.html">PerfMon</a> - browse perfMon counters on remote machines and plot charts</li>
+							<li>
+								 <a href="EventLog.html">EventLog</a> - browse Errors in Application event log</li>
+							<li>
+								 <a href="Postgres.html">Postgres</a> - Postgres server stats and perf metrics</li>
+							<li>
+								 <a href="MySQL.html">MySQL</a> - MySQL database module</li>
+							<li>
+								 <a href="AWS.html">AWS</a> - browse EC2 and RDS instances and S3 buckets</li>
+						</ul>
+						<p>
+							 Modules MSSQL, WMI and FileBrowse are compatible with each other as they are based on the same convention - windows machine has <b>class=WinServer</b>. The can coexist and a list of servers can be fed from the same source.</p>
+					</div>
+				</section>
+			</main>
+			<!-- Main section End-->
+			<!-- Footer section-->
+			<footer class="footer">
+				<div class="container">
+					<p>We are inviting new contributors and <a href="#" target="_blank" rel="nofollow">module creators</a></p>
+				</div>
+			</footer>
+		</div>
+		<script>
+			if (!('IntersectionObserver' in window)) {
+				var script = document.createElement("script");
+				script.src = "https://raw.githubusercontent.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js";
+				document.getElementsByTagName('head')[0].appendChild(script);
+			}
+		</script>
+		<script src="./js/vendor.js?v=1685716269632"></script>
+		<script src="./js/main.js?v=1685716269632"></script>
+	</body>
+</html>

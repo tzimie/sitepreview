@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+		<meta name="description" content="Описание страницы">
+		<meta name="theme-color" content="#dcf4f7">
+		<meta name="format-detection" content="telephone=no">
+		<title>News</title>
+		<link rel="stylesheet" href="./css/main.css?v=1685716270082">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	</head>
+	<body>
+		<div class="site">
+			<!-- Header Start-->
+			<header class="header">
+				<div class="container">
+					<div class="header__wrapper"><a class="header__logo logo" href="/"><img class="logo__img" src="/logo.png" alt="logo" width="150" height="150"></a>
+						<button class="header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+						<nav class="header__menu">
+							<button class="header__menu-burger header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+							<ul class="header__lists">
+								<li class="header__list"><a class="header__link" href="/">Home</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Mission.html">Mission</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Writing-a-Module.html">Coding</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Modules.html">Modules Overview</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Modules.html">Modules</a>
+									<ul class="submenu">
+										<li class="submenu__list"><a class="submenu__link" href="/MSSQL.html">MSSQL</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/VMware.html">VMware</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/WMI.html">WMI</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/FileBrowse.html">FileBrowse</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/PerfMon.html">PerfMon</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/EventLog.html">EventLog</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/Postgres.html">Postgres</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/MySQL.html">MySQL</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/AWS.html">AWS</a></li>
+									</ul>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Repos.html">Repos</a>
+								</li>
+								<li class="header__list"><a class="header__link is-active" href="/News.html">News</a>
+								</li>
+							</ul>
+						</nav>
+						<div class="header__overlay"></div>
+					</div>
+				</div>
+			</header>
+			<!-- Header End-->
+			<!-- Main section-->
+			<main class="main">
+				<section class="main-page">
+					<div class="container">
+						<h3>Change log and project history:</h3>
+						<p>0.1 - first POC<br>          0.15 - <span style="font-weight: 700;">vic</span> started ver v2.0
+							          development, node/vue<br>          0.2 - v0.2 ready, several presentations done<br>          0.3 - Postgres version<br>          0.31 - MySQL version<br>          0.32 - AWS version<br>          0.33 - WMI module<br>          0.34 - FileBrowse module<br>          0.35 - VMware module<br>          0.36 - PerfMon module<br>          0.37 - EventLog module<br><br><strong><POC used in real environments in PROD></strong><br><br>          0.4 - preparation to make project public<br>          0.41 - making repos public, publish on Habr <br>          0.5 - Ubuntu support (pwsh on Ubuntu 22.04) <br>          0.51 - for MSSQL, Postgre and MySQL, rewritten .ps1 modules to .py and
+							          tested on Ubuntu <br>          0.53 - fix syntax highlighting for MSSQL and postgre - /* comments */<br>          0.55 - Stable release <br>          0.60 - cluster mode for node server, secrets in config.js file<br>          0.62 - docker image release <br>          0.70 - custom sorting feature added for folders<br>          0.71 - image embedding and working directories <br>          0.72 - supports a script to resolve secrets.<br>          0.72a - experimental docker release<br>          0.72b - new visualizations in Scripts, but no changes on node<br>0.73 - correct CRLF control for Windows in docker
+							          server
+						</p>
+					</div>
+				</section>
+			</main>
+			<!-- Main section End-->
+			<!-- Footer section-->
+			<footer class="footer">
+				<div class="container">
+					<p>We are inviting new contributors and <a href="#" target="_blank" rel="nofollow">module creators</a></p>
+				</div>
+			</footer>
+		</div>
+		<script>
+			if (!('IntersectionObserver' in window)) {
+				var script = document.createElement("script");
+				script.src = "https://raw.githubusercontent.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js";
+				document.getElementsByTagName('head')[0].appendChild(script);
+			}
+		</script>
+		<script src="./js/vendor.js?v=1685716270082"></script>
+		<script src="./js/main.js?v=1685716270082"></script>
+	</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+		<meta name="description" content="Описание страницы">
+		<meta name="theme-color" content="#dcf4f7">
+		<meta name="format-detection" content="telephone=no">
+		<title>Modules</title>
+		<link rel="stylesheet" href="./css/main.css?v=1685716269815">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	</head>
+	<body>
+		<div class="site">
+			<!-- Header Start-->
+			<header class="header">
+				<div class="container">
+					<div class="header__wrapper"><a class="header__logo logo" href="/"><img class="logo__img" src="/logo.png" alt="logo" width="150" height="150"></a>
+						<button class="header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+						<nav class="header__menu">
+							<button class="header__menu-burger header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+							<ul class="header__lists">
+								<li class="header__list"><a class="header__link" href="/">Home</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Mission.html">Mission</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Writing-a-Module.html">Coding</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Modules.html">Modules Overview</a>
+								</li>
+								<li class="header__list"><a class="header__link is-active" href="/Modules.html">Modules</a>
+									<ul class="submenu">
+										<li class="submenu__list"><a class="submenu__link is-active" href="/MSSQL.html">MSSQL</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/VMware.html">VMware</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/WMI.html">WMI</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/FileBrowse.html">FileBrowse</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/PerfMon.html">PerfMon</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/EventLog.html">EventLog</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/Postgres.html">Postgres</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/MySQL.html">MySQL</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/AWS.html">AWS</a></li>
+									</ul>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Repos.html">Repos</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/News.html">News</a>
+								</li>
+							</ul>
+						</nav>
+						<div class="header__overlay"></div>
+					</div>
+				</div>
+			</header>
+			<!-- Header End-->
+			<!-- Main section-->
+			<main class="main">
+				<section class="main-page">
+					<div class="container">
+						<h1>
+							 MSSQL module</h1>
+						<p><a href="Download-MSSQL-.html">Download</a>&nbsp;the
+							          module and modify&nbsp;<b>ROOT_MSSQLstub.ps1</b>&nbsp;-
+							          out of the box it lists just the current server. You will probably
+							          want to add more from one of the inventories. When connection strings
+							          contain passwords, it is recommended to write them in the following
+							          format: <i>###secretname###</i>, and the value for the secret is
+							          stored in config.js file and is not sent to a client (and can not be
+							          debugged using F12-console). Contribute more on <a href="https://github.com/tzimie/BellModules" target="_blank">Github.</a><br><br>          This module exposes a lot of SQL server statistics, metrics, and even
+							          source code. No actual data is exposed, only aggregations. You can add
+							          reports to select data from specific tables, which you consider
+							          technical, so there is no sensitive data inside. All other reports
+							          should be safe. Still, some sensitive data can leak thru queries, for
+							          example, in Activity Monitor in the hard-coded constants of the
+							          queries in WHERE conditions, for example. You can add something like<br><br>          $v = $v -replace &quot;&apos;([^&apos;]{2,})&apos;&quot;, &quot;&apos;str&apos;&quot; -replace &quot;[0-9][0-9]+&quot;, &apos;999&apos;<br><br>          to replace all big numeric constants with 999 and &apos;long strings&apos; with
+							          &apos;str&apos;, leaving simple values like =0, =1, =&apos;Y&apos;, =&apos;N&apos; intact.<br><br>          Here is the big picture:
+						</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/mssql1.png" alt="mssql1" width="394" height="404">
+						<p>At the top level, we have  <b>server-wide</b> statistics:</p>
+						<ul>
+							<li>
+								List of databases with their sizes, you can open any database to
+								get <b>database-wide</b> statistics
+							</li>
+							<li>Expensive queries (similar to what you have in Activity Monitor)</li>
+							<li>
+								Current activity for 10 seconds - the main difference from the
+								previous option is that it is based on sysprocesses and delta in CPU
+								for the last 10 seconds
+							</li>
+							<li>
+								Report on used and free space in all databases and top 3 biggest
+								tables so you can easily spot where the disk space is being used and
+								what to shrink
+							</li>
+							<li>
+								SQL agent Jobs status, their last durations and failures are shown
+								in red
+							</li>
+							<li>Current locking&nbsp;</li>
+							<li>
+								SQL server CPU for the last 256 seconds from a ring buffer - a
+								chart
+							</li>
+							<li>Performance can be expanded to get statistics on the specified day</li>
+						</ul>
+						<p>
+							 At a database level we can get the 'biggest tables report' we usually use in SSMS and much more:</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/mssql2.png" alt="mssql2" width="1015" height="294">
+						<p>
+							 We can open any programmatic objects (functions, views, procedures) to inspect the code to confirm that it is really the version we expect. Of course, you can't change the code, it is read only.</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/mssql3.png" alt="mssql3" width="1078" height="512">
+						<p>
+							 When you expand the table list, you can see the number of records in the tables.</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/mssql4.png" alt="mssql4" width="1093" height="259">
+						<p>
+							 Column selectivity report spots values with low and irregular selectivity. Column RecordsInMostFreqVal is the number of records with the 'top 1' value. The last column in the same in percent to the total number of rows, so you can see that while there are 72 distinct values in ReferenceorderLineID, 46% has the same value. Probably it is ID=1, but Bell hides any actual data from a user.<br><br>The fragmentation report shows how badly data is fragmented, and charts (Chart by Columns...) are created for all datetime columns, so user can check the distribution - the number of values by date.</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/mssql5.png" alt="mssql5" width="1059" height="950">
+						<p>
+							 The index coverage report lists all columns, covered by any index at least once. Leading column in an index is marked with '1', second with '2' etc. Yuo can easily spot over-indexing and bad indexing.</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/index.png" alt="index" width="1086" height="321"><br><br>
+						<p>
+							 Finally, in SQL server Performance, we can filter SQL error log by day:</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/mssql7.png" alt="mssql7" width="1071" height="435"><br><br>
+						<p><b>NEW:</b> TreeMap of table and index sizes
+							          in every database and on a server at whole. <br>          Color represents: <br><b>&nbsp;&nbsp;Green</b> - clustered indexes <br><b>&nbsp;&nbsp;Blue</b> - nonclustered indexes <br><b>&nbsp;&nbsp;Red</b> - heap <br><b>&nbsp;&nbsp;Yellow</b> - columnstore indexes <br><b>&nbsp;&nbsp;Magenta</b> - other types of indexes (XML, spacial etc)<br>          Note: on a screenshot below table and index names are obfuscated -
+							          data was taken from a real production system
+						</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/dbdemo.png" alt="dbdemo" width="1023" height="623"><br><br>
+						<p><b>NEW:</b> Visualization of the execution of
+							          the SQL agent jobs. <br>          &nbsp;&nbsp;Different steps are represented with different colors<br>          &nbsp;&nbsp;Failed steps are marked with red line crossing the box<br>          &nbsp;&nbsp;Executions yesterday, day before yesterday and more days
+							          ago are displayed slightly shifted upwards, but colors are
+							          progressively pale <br>          Note: on a screenshot job names are obfuscated - data was taken from a
+							          real production system
+						</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/jobsview.png" alt="jobsview" width="1080" height="720"><br>
+						<p>
+							 <b>NEW:</b> Visualization of the layout of the database files across the drives with the relative file size and size of the free space.
+							Similar visualization exists for the IO by database file - reads and writes.
+							Note: on a screenshot database file names are obfuscated - data was taken from a real production system
+						</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/drivesdemo.png" alt="drivesdemo" width="1024" height="626">
+					</div>
+				</section>
+			</main>
+			<!-- Main section End-->
+			<!-- Footer section-->
+			<footer class="footer">
+				<div class="container">
+					<p>We are inviting new contributors and <a href="#" target="_blank" rel="nofollow">module creators</a></p>
+				</div>
+			</footer>
+		</div>
+		<script>
+			if (!('IntersectionObserver' in window)) {
+				var script = document.createElement("script");
+				script.src = "https://raw.githubusercontent.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js";
+				document.getElementsByTagName('head')[0].appendChild(script);
+			}
+		</script>
+		<script src="./js/vendor.js?v=1685716269815"></script>
+		<script src="./js/main.js?v=1685716269815"></script>
+	</body>
+</html>

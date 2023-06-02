@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+		<meta name="description" content="Описание страницы">
+		<meta name="theme-color" content="#dcf4f7">
+		<meta name="format-detection" content="telephone=no">
+		<title>Modules</title>
+		<link rel="stylesheet" href="./css/main.css?v=1685716269968">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	</head>
+	<body>
+		<div class="site">
+			<!-- Header Start-->
+			<header class="header">
+				<div class="container">
+					<div class="header__wrapper"><a class="header__logo logo" href="/"><img class="logo__img" src="/logo.png" alt="logo" width="150" height="150"></a>
+						<button class="header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+						<nav class="header__menu">
+							<button class="header__menu-burger header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+							<ul class="header__lists">
+								<li class="header__list"><a class="header__link" href="/">Home</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Mission.html">Mission</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Writing-a-Module.html">Coding</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Modules.html">Modules Overview</a>
+								</li>
+								<li class="header__list"><a class="header__link is-active" href="/Modules.html">Modules</a>
+									<ul class="submenu">
+										<li class="submenu__list"><a class="submenu__link" href="/MSSQL.html">MSSQL</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/VMware.html">VMware</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/WMI.html">WMI</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/FileBrowse.html">FileBrowse</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/PerfMon.html">PerfMon</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/EventLog.html">EventLog</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/Postgres.html">Postgres</a></li>
+										<li class="submenu__list"><a class="submenu__link is-active" href="/MySQL.html">MySQL</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/AWS.html">AWS</a></li>
+									</ul>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Repos.html">Repos</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/News.html">News</a>
+								</li>
+							</ul>
+						</nav>
+						<div class="header__overlay"></div>
+					</div>
+				</div>
+			</header>
+			<!-- Header End-->
+			<!-- Main section-->
+			<main class="main">
+				<section class="main-page">
+					<div class="container">
+						<h1>
+							 MySQL module</h1><br>
+						<p><a href="Download-MySQL-.html">Download</a>&nbsp;the
+							          module and modify&nbsp;<b>ROOT_MYSQLstub.ps1</b>&nbsp;-
+							          out of the box it lists just the current server. You will probably
+							          want to add more from one of the inventories. When connection strings
+							          contain passwords, it is recommended to write them in the following
+							          format: <i>###secretname###</i>, and the value for the secret is
+							          stored in config.js file and is not sent to a client (and can not be
+							          debugged using F12-console). Contribute more on <a href="https://github.com/tzimie/BellModules" target="_blank">Github.</a><br><br>          This module exposes a lot of SQL server statistics, metrics, and even
+							          source code. No actual data is exposed, only aggregations. You can add
+							          reports to select data from specific tables, which you consider
+							          technical, so there is no sensitive data inside. All other reports
+							          should be safe. Still, some sensitive data can leak thru queries, for
+							          example, in Activity Monitor in the hardcoded constants of the queries
+							          in WHERE conditions, for example. You can add something like<br><br>          $v = $v -replace &quot;&apos;([^&apos;]{2,})&apos;&quot;, &quot;&apos;str&apos;&quot; -replace &quot;[0-9][0-9]+&quot;, &apos;999&apos;<br><br>          to replace all big numeric constants with 999 and &apos;long strings&apos; with
+							          &apos;str&apos;, leaving simple values like =0, =1, =&apos;Y&apos;, =&apos;N&apos; intact.<br><br>          Here is the big picture:
+						</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/mysql1.png" alt="mysql1" width="463" height="887"><br>
+						<p>
+							 You get a list of databases with their sizes, and at the top level you get a list of server-wide reports:</p>
+						<ul>
+							<li>Current activity</li>
+							<li>Current locks</li>
+							<li>Process list</li>
+						</ul>
+						<p>
+							 Generate reports about current activity, for example:</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/mysql2.png" alt="mysql2" width="1214" height="211"><br><img class="box-shadow mx-auto d-block h-auto" src="./images/content/mysql3.png" alt="mysql3" width="1359" height="588"><br><img class="box-shadow mx-auto d-block h-auto" src="./images/content/mysql4.png" alt="mysql4" width="1632" height="117"><br><br>
+						<p>
+							 You can also build charts on IO and other metrics. They are based on performance_schema cumulative counters, interpreted as deltas during a 30 seconds interval:</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/mysql5.png" alt="mysql5" width="817" height="715"><br><br>
+						<p>
+							 You can filter the error log by <br>day:</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/mysql6.png" alt="mysql6" width="1354" height="625"><br>
+						<p>
+							 You can inspect the contents of MySQL functions and procedures to check that correct version is installed:</p><br><img class="box-shadow mx-auto d-block h-auto" src="./images/content/mysql7.png" alt="mysql7" width="1136" height="201"><br>
+						<p>
+							 And finally, for the tables you can get sizes, fragmentation and selectivity per date (without having access to the fact data, which can be sensitive):</p><br><img class="box-shadow mx-auto d-block h-auto" src="./images/content/mysql9.png" alt="mysql9" width="1213" height="190"><br><img class="box-shadow mx-auto d-block h-auto" src="./images/content/mysql8.png" alt="mysql8" width="1361" height="712"><br>
+						<p class="text-center">The index coverage report lists all columns, covered by any index at least once. Leading column in an index is marked with '1', second with '2' etc. You can easily spot overindexing and bad indexing.</p><br><img class="box-shadow mx-auto d-block h-auto" src="./images/content/PGindexing.png" alt="PGindexing" width="1078" height="275"><br>
+						<p>
+							 <b>NEW:</b> TreeMap of reads and writes per InnoDb files (2 separate charts)</p><img class="box-shadow d-block h-auto" src="./images/content/mysqliofile.png" alt="mysqliofile" width="1024" height="620"><br>
+						<p><b>NEW:</b> TreeMap of table and index sizes in every database and on
+							          server at whole. <br>          Color represents: <br><b>&nbsp;&nbsp;Green</b> - table data <br><b>&nbsp;&nbsp;Yellow</b> - indexes
+						</p><img class="box-shadow d-block h-auto" src="./images/content/mysqltab.png" alt="mysqltab" width="1027" height="625">
+					</div>
+				</section>
+			</main>
+			<!-- Main section End-->
+			<!-- Footer section-->
+			<footer class="footer">
+				<div class="container">
+					<p>We are inviting new contributors and <a href="#" target="_blank" rel="nofollow">module creators</a></p>
+				</div>
+			</footer>
+		</div>
+		<script>
+			if (!('IntersectionObserver' in window)) {
+				var script = document.createElement("script");
+				script.src = "https://raw.githubusercontent.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js";
+				document.getElementsByTagName('head')[0].appendChild(script);
+			}
+		</script>
+		<script src="./js/vendor.js?v=1685716269968"></script>
+		<script src="./js/main.js?v=1685716269968"></script>
+	</body>
+</html>

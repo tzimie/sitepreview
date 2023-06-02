@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+		<meta name="description" content="Описание страницы">
+		<meta name="theme-color" content="#dcf4f7">
+		<meta name="format-detection" content="telephone=no">
+		<title>Mission</title>
+		<link rel="stylesheet" href="./css/main.css?v=1685716269486">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	</head>
+	<body>
+		<div class="site">
+			<!-- Header Start-->
+			<header class="header">
+				<div class="container">
+					<div class="header__wrapper"><a class="header__logo logo" href="/"><img class="logo__img" src="/logo.png" alt="logo" width="150" height="150"></a>
+						<button class="header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+						<nav class="header__menu">
+							<button class="header__menu-burger header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+							<ul class="header__lists">
+								<li class="header__list"><a class="header__link" href="/">Home</a>
+								</li>
+								<li class="header__list"><a class="header__link is-active" href="/Mission.html">Mission</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Writing-a-Module.html">Coding</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Modules.html">Modules Overview</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Modules.html">Modules</a>
+									<ul class="submenu">
+										<li class="submenu__list"><a class="submenu__link" href="/MSSQL.html">MSSQL</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/VMware.html">VMware</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/WMI.html">WMI</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/FileBrowse.html">FileBrowse</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/PerfMon.html">PerfMon</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/EventLog.html">EventLog</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/Postgres.html">Postgres</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/MySQL.html">MySQL</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/AWS.html">AWS</a></li>
+									</ul>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Repos.html">Repos</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/News.html">News</a>
+								</li>
+							</ul>
+						</nav>
+						<div class="header__overlay"></div>
+					</div>
+				</div>
+			</header>
+			<!-- Header End-->
+			<!-- Main section-->
+			<main class="main">
+				<section class="main-page">
+					<div class="container">
+						<h1>
+							 Project ​Mission and Vision<br><br></h1>
+						<p>
+							 <b>DevOps</b> usually deals with code deployments – data flow from lower environments to <b>PROD</b>. There is also a flow in the opposite direction. Databases are moved from higher environments to lower environments with cleaning of the sensitive data. Secondly, developers connect to PROD to work on bugs and to check the configurations and performance. <br><br>Tools to provide such functionality are immature. <b>RDP</b> or <b>CA PAM</b> gives you too much access. Such tools usually work on <i>“all-or-nothing”</i> manner. One can change a config or even to delete a file just be accidental key stroke. <br><br></p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/del.png" alt="del" width="403" height="92"><br>
+						<p>In tools like <b>CA PAM</b>, even when only read-only SQL access is provided, a user can still select data from sensitive tables: </p><br><img class="box-shadow mx-auto d-block h-auto" src="./images/content/select1.png" alt="select1" width="403" height="114"><br>
+						<p>
+							 That is why such access must be approved (and often approvals frequently take a long time). <br><br>But in a reality, developers usually need only harmless things, having nothing to deal with sensitive data or with breaking anything – typically they want just to check performance metrics, that want to inspect the config files, to compare the number of records in tables (without reading any data from these tables), to check data fragmentation et cetera.<br><br>Bell is a framework to expose access to some (limited and predefined) data/metrics on PROD in an interactive manner. It consists of a framework (open source) and a set of scripts (such sets are called modules). The framework supports integrated security with <b>Active Directory</b>, it can assign permissions based on AD groups, and logs all actions to the audit file or table. <br><br>Contrary to products like <b>Octopus</b>, no agent is expected to be installed on every server - instead, the machine where Bell server resides is expected to have enough privileges and network access to be able to get information from the other machines in an agentless manner (by using a remote connection to SQL servers, using WMI, by Powershell cmdlets with <i>-ComputerName</i> parameter)<br><br>Framework Scripts are very compact, written in <b>Powershell</b> and usually have 5-10 lines per item. <b>Python</b> and other shells are also supported. Building a solution is like making something from <b>LEGO</b> modules. You can write your own module, you can modify the existing one (hardening the security, for example) and you add features to the existing module without changing the module script files. We provide some useful projects to start with.</p><img class="mx-auto d-block h-auto" src="./images/content/PROD_tr1.png" alt="PROD_tr1" width="926" height="925">
+						<p class="mt-5">The project name <b>(Bell - Action at a Distance)</b> comes from the idea of doing something at a distance, against all odds, without having full access to the system. <br><br>The guy in the logo picture is <a href="https://en.wikipedia.org/wiki/John_Stewart_Bell" target="_blank" rel="nofollow">John Steward Bell</a>, the one who had proved the <a href="https://en.wikipedia.org/wiki/Bell%27s_theorem" target="_blank" rel="nofollow">Bell Theorem</a> about Quantum Entanglement.</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/JohnStewartBell.jpg" alt="JohnStewartBell" width="315" height="317">
+						<p><b>OpsDev</b>, or <i>"reverse DevOps"</i>, is a new area of DevOps.</p>
+					</div>
+				</section>
+			</main>
+			<!-- Main section End-->
+			<!-- Footer section-->
+			<footer class="footer">
+				<div class="container">
+					<p>We are inviting new contributors and <a href="#" target="_blank" rel="nofollow">module creators</a></p>
+				</div>
+			</footer>
+		</div>
+		<script>
+			if (!('IntersectionObserver' in window)) {
+				var script = document.createElement("script");
+				script.src = "https://raw.githubusercontent.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js";
+				document.getElementsByTagName('head')[0].appendChild(script);
+			}
+		</script>
+		<script src="./js/vendor.js?v=1685716269486"></script>
+		<script src="./js/main.js?v=1685716269486"></script>
+	</body>
+</html>

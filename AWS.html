@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+		<meta name="description" content="Описание страницы">
+		<meta name="theme-color" content="#dcf4f7">
+		<meta name="format-detection" content="telephone=no">
+		<title>Modules</title>
+		<link rel="stylesheet" href="./css/main.css?v=1685716268228">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	</head>
+	<body>
+		<div class="site">
+			<!-- Header Start-->
+			<header class="header">
+				<div class="container">
+					<div class="header__wrapper"><a class="header__logo logo" href="/"><img class="logo__img" src="/logo.png" alt="logo" width="150" height="150"></a>
+						<button class="header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+						<nav class="header__menu">
+							<button class="header__menu-burger header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+							<ul class="header__lists">
+								<li class="header__list"><a class="header__link" href="/">Home</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Mission.html">Mission</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Writing-a-Module.html">Coding</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Modules.html">Modules Overview</a>
+								</li>
+								<li class="header__list"><a class="header__link is-active" href="/Modules.html">Modules</a>
+									<ul class="submenu">
+										<li class="submenu__list"><a class="submenu__link" href="/MSSQL.html">MSSQL</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/VMware.html">VMware</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/WMI.html">WMI</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/FileBrowse.html">FileBrowse</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/PerfMon.html">PerfMon</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/EventLog.html">EventLog</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/Postgres.html">Postgres</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/MySQL.html">MySQL</a></li>
+										<li class="submenu__list"><a class="submenu__link is-active" href="/AWS.html">AWS</a></li>
+									</ul>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Repos.html">Repos</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/News.html">News</a>
+								</li>
+							</ul>
+						</nav>
+						<div class="header__overlay"></div>
+					</div>
+				</div>
+			</header>
+			<!-- Header End-->
+			<!-- Main section-->
+			<main class="main">
+				<section class="main-page">
+					<div class="container">
+						<h1>
+							 AWS</h1><br>
+						<p><a href="Download-AWS.html">Download</a> the module and modify&nbsp;<b>ROOT_AWSstub.ps1</b> - out of the box it lists just the current server. You will probably want to add more from one of the inventories. Contribute more on <a href="https://github.com/tzimie/BellModules" target="_blank">Github.</a></p>
+						<p>
+							 The AWS module provides a user without access to the AWS management console with an ability to perform some basic read-only activities:</p>
+						<ul>
+							<li>to check status (stopped/started) of EC2 instances and their configuration</li>
+							<li>to check status of RDS instances</li>
+							<li>to get logs from RDS and EC2 and to read console messages</li>
+							<li>to browse S3 buckets and files - without the ability to read files (just to check, for example, that a file exists)</li>
+							<li>to get CPU charts</li>
+						</ul>
+						<p>
+							 The following screenshot gives you an overview of what you can access:</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/aws1.png" alt="aws1" width="613" height="847"><br>
+						<p>
+							 You can get detailed properties of EC2 and RDS: </p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/aws2.png" alt="aws2" width="560" height="333"><br>
+						<p>
+							 You can read the console logs of EC2 instances:</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/aws3.png" alt="aws3" width="798" height="352"><br>
+						<p>
+							 For the running RDS and EC2 instances you can check CPU statistics:</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/aws4.png" alt="aws4" width="753" height="735"><br>
+						<p>
+							 For RDS, you can check the logs available on the AWS side (as you can't access them directly):</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/aws5.png" alt="aws5" width="1546" height="460"><br>
+						<p>
+							 And finally, you can browse S2 buckets and files inside - without accessing the files, so no sensitive information can leak, but users can check the existence of a file or a backup:</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/aws6.png" alt="aws6" width="411" height="307">
+					</div>
+				</section>
+			</main>
+			<!-- Main section End-->
+			<!-- Footer section-->
+			<footer class="footer">
+				<div class="container">
+					<p>We are inviting new contributors and <a href="#" target="_blank" rel="nofollow">module creators</a></p>
+				</div>
+			</footer>
+		</div>
+		<script>
+			if (!('IntersectionObserver' in window)) {
+				var script = document.createElement("script");
+				script.src = "https://raw.githubusercontent.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js";
+				document.getElementsByTagName('head')[0].appendChild(script);
+			}
+		</script>
+		<script src="./js/vendor.js?v=1685716268228"></script>
+		<script src="./js/main.js?v=1685716268228"></script>
+	</body>
+</html>

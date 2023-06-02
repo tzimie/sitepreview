@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+		<meta name="description" content="Описание страницы">
+		<meta name="theme-color" content="#dcf4f7">
+		<meta name="format-detection" content="telephone=no">
+		<title>Coding</title>
+		<link rel="stylesheet" href="./css/main.css?v=1685716270885">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	</head>
+	<body>
+		<div class="site">
+			<!-- Header Start-->
+			<header class="header">
+				<div class="container">
+					<div class="header__wrapper"><a class="header__logo logo" href="/"><img class="logo__img" src="/logo.png" alt="logo" width="150" height="150"></a>
+						<button class="header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+						<nav class="header__menu">
+							<button class="header__menu-burger header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+							<ul class="header__lists">
+								<li class="header__list"><a class="header__link" href="/">Home</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Mission.html">Mission</a>
+								</li>
+								<li class="header__list"><a class="header__link is-active" href="/Writing-a-Module.html">Coding</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Modules.html">Modules Overview</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Modules.html">Modules</a>
+									<ul class="submenu">
+										<li class="submenu__list"><a class="submenu__link" href="/MSSQL.html">MSSQL</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/VMware.html">VMware</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/WMI.html">WMI</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/FileBrowse.html">FileBrowse</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/PerfMon.html">PerfMon</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/EventLog.html">EventLog</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/Postgres.html">Postgres</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/MySQL.html">MySQL</a></li>
+										<li class="submenu__list"><a class="submenu__link" href="/AWS.html">AWS</a></li>
+									</ul>
+								</li>
+								<li class="header__list"><a class="header__link" href="/Repos.html">Repos</a>
+								</li>
+								<li class="header__list"><a class="header__link" href="/News.html">News</a>
+								</li>
+							</ul>
+						</nav>
+						<div class="header__overlay"></div>
+					</div>
+				</div>
+			</header>
+			<!-- Header End-->
+			<!-- Main section-->
+			<main class="main">
+				<section class="main-page">
+					<div class="container">
+						<h1>
+							 Coding your own Module</h1>
+						<p>
+							 Bell scripts are placed in the same directory on the root level. In the examples below we use <b>ext</b> for an extension of a script, for <b>Powershell</b> it is ps1 (and in the examples below, we use Powershell scripts as examples, but <b>Python</b> files <b>(.py)</b> can be also used and even mixed with <b>.ps1</b> files). There are 2 required scripts: login.ext, audit.ext, all other scripts are optional.<br><br>login.ext processes the login request:</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/loginscreen.png" alt="loginscreen" width="363" height="580"><br>
+						<p class="mt-5">
+							 The login logic is completely encapsulated inside the script. It can use predefined hard-coded logins, it can have it's own database or users/logins, or, which is better, it can use Active Directory. The framework is unaware of what method is used.</p><br><img class="box-shadow mx-auto d-block h-auto" src="./images/content/loginconsole.png" alt="loginconsole" width="487" height="139"><br>
+						<p>When login is successful (second example), the script should output 2 lines. The first line is semicolon-separated list of security "groups". That list is passed to every other script, so any script can decide if an operation should be denied or not. <br><br>You can put AD group names as is, but usually such group names are long and might change, so it makes sense to 'translate' them with some short names. In the example above AD groups are translated into "RO" (those who can read everything), and "RW" (those who can do more dangerous things. Download any module to check the example with AD.<br><br>The second line in the cortege for the root element. Corteges are explained below, they are used to define tree's contents. <br><br>A cortege consists of 4 |-separated fields: <i>name</i>, which is a <i>name</i> you can see in GUI, element <i>class</i>, element <i>type</i>, and <i>tags</i>.</p><br><img class="box-shadow mx-auto d-block h-auto" src="./images/content/tree1.png" alt="tree1" width="291" height="246"><br><br><img class="box-shadow mx-auto d-block h-auto" src="./images/content/con21.png" alt="con21" width="687" height="180">
+						<p>In this example there are 2 scripts, but quite often there is just one. Why do we need more than one script? This is useful because you can 'plug' additional functionality to an existing module, you can add tree elements (properties) without modifying the existing script. All you need to know is the class name. What happens if we run the script?<br><br>All scripts have 4 parameters: <i>user</i>, <i>group</i> (list of groups created once for the session by login.<i>ext</i>), <i>name</i> of the caller element and <i>tags</i>.</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/con3.png" alt="con3" width="1107" height="137">
+						<p>
+							 So we can see that both scripts had returned the <i>corteges</i>. <i>Name</i> is displayed in a tree, <i>class</i> in used to identify, what script(s) 
+							to run. <i>Type</i> defines a type of element: <i>folder</i> for a tree, and leaves elements are <i>text</i>, <i>html</i>, <i>file</i> and chart. 
+							<i>Tags</i> are used to pass the context from one script to another. <i>Tags</i> typically are <i>key=value</i> pairs, where multiple key=values are separated with ~. 
+							Values can contain a sign '=', the first = is interpreted as key/value separator, while all successive equal signs are interpreted 
+							as parts of the value. Sometimes tags contain passwords, it is recommended to write them in the following format: <i>###secretname###</i>,
+							and the value for the secret is stored in config.js file and is not sent to a client (and can not be debugged using F12-console)<br><br>When a 'leaf' element is executed, the bell framework searches for the script called <classname>.ext, so only one script is executed. This is because a report is 'atomic' and there is nothing to merge. Nice reports are typically produced by the elements of the type 'html'.
+						</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/html.png" alt="html" width="960" height="268"><br><br><img class="box-shadow mx-auto d-block h-auto" src="./images/content/tables.png" alt="tables" width="1202" height="387"><br>
+						<p>
+							 Note how context is passed thru tags. Formatting to HTML is easily achieved in Powershell. lets check how that script works step by step. </p>
+						<p class="text-small paragraph dark-color">param ([string]$usr, [string]$grp, [string]$name, [string]$tags)<br>. $PSScriptRoot/MSSQLquery.ps1 <br>parse $tags <br><br>$conn = $tagval.Conn <br>$dbname = $tagval.dbname</p>
+						<p>
+							 In the beginning, we add the common MSSQL module. Function 'parse' parses tags into a hash table $tagval. Demo SQL module doesn't have any security, so $grp is ignored. Next, we populate $Header as the table header and $q as the SQL query to get the biggest tables. Finally, we do:<br><br>'text' scripts return plain text as is:</p>
+						<p class="text-small paragraph dark-color">$d = MSSQLquery $conn $q | Select-Object -Property * -ExcludeProperty "ItemArray", "RowError", "RowState", "Table", "HasErrors"<br>$d | ConvertTo-HTML -Title "Rows" -Head $Header -body '&lt;h2&gt;Top 30 tables, by row count, desc&lt;/h2&gt;'<br><br><img class="box-shadow d-block h-auto" src="./images/content/text.png" alt="text" width="1029" height="105"></p><br>
+						<p>And finally, 'chart' returns chart data in the following format:<br>Line 1 - chart type: word <b>'Line'</b> or <b>'Bar'</b>, optionally followed by ,<b>'startAtzero'</b> -  this fixed Ymin=0<br>Line 2 - title<br>Line 3 - X axis name<br>Line 4 - Y axis name<br>Line 5 - Column names, comma separated. <br>Next - values, comma separated. Values must be int or float, first column <b>'must'</b> be datetime (format with 'T'), scale is auto-calculated.<br><br>Code sample (query is in $q):</p>
+						<p class="text-small paragraph dark-color">@"<br>Line<br>Instant SQL server cpu for the last seconds<br>X - time<br>Y - CPU pct<br>"@<br>MSSQLchart $conn $q</p><img class="box-shadow mx-auto d-block h-auto" src="./images/content/chart.png" alt="chart" width="986" height="504"><br>
+						<p>
+							 audit.<i>'ext'</i> is executed after every operation. Bell framework passes the following information to a script: 
+							all 4 parameters, like for any other script, followed by status code (0 - success). Audit script must be present, 
+							it can be empty if you don't need it. Typically, it logs all information into a file or a database. 
+							You can find working examples in the modules.<br><br>Finally, you can force download of a file (useful for the bug files). Specify type='file'. Script should output full path to a file
+						</p>
+						<p><b>Update v0.70:</b><br>You can override the default order of elements in a folder (which is <i>names alphabetically, case-insensitive</i>) 
+							by providing a numeric priority. Priority is a number from 0 to 99999 appended to a name after ';' sign. 
+							Default priority is 100.  In a simple scenario, to put an element on top, append ;1 to a name. 
+							If you provide a priority to all elements you can force any order you want. 
+							Elements with the same priority are ordered as before.
+						</p>
+						<p><b>Update v0.71:</b><br>Script can generate images and save them to the current default directory. 
+							Current directory is cleaned every time before running a script. 
+							Different workers have different working directories so collisions are avoided.
+						</p>
+						<p><b>Update v0.72:</b><br>Secrets in tags (###) are resolved using the <b>config.js</b>, but if not found 
+							there server executes script <b>secret.ps1</b> or <b>secret.py</b> (in a scripts directory). 
+							This script gets secret name in the 1st parameter and should return the value using <b>Write-Host</b> or <b>print</b>. 
+							All errors, raised by this script are handled and logged.
+						</p>
+					</div>
+				</section>
+			</main>
+			<!-- Main section End-->
+			<!-- Footer section-->
+			<footer class="footer">
+				<div class="container">
+					<p>We are inviting new contributors and <a href="#" target="_blank" rel="nofollow">module creators</a></p>
+				</div>
+			</footer>
+		</div>
+		<script>
+			if (!('IntersectionObserver' in window)) {
+				var script = document.createElement("script");
+				script.src = "https://raw.githubusercontent.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js";
+				document.getElementsByTagName('head')[0].appendChild(script);
+			}
+		</script>
+		<script src="./js/vendor.js?v=1685716270885"></script>
+		<script src="./js/main.js?v=1685716270885"></script>
+	</body>
+</html>
