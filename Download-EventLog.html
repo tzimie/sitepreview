@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Описание страницы">
+    <meta name="theme-color" content="#dcf4f7">
+    <meta name="format-detection" content="telephone=no">
+    <title>Download AWS</title>
+    <link rel="stylesheet" href="./css/main.css?v=1685716268513">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+      rel="stylesheet">
+  </head>
+  <body>
+    <div class="site">
+      <!-- Header Start-->
+      <header class="header">
+        <div class="container">
+          <div class="header__wrapper"><a class="header__logo logo" href="/"><img
+                class="logo__img" src="/logo.png" alt="logo" height="150" width="150"></a>
+            <button class="header__burger btn js-burger" type="button"><span></span><span></span><span></span></button>
+            <nav class="header__menu"> <button class="header__menu-burger header__burger btn js-burger"
+                type="button"><span></span><span></span><span></span></button>
+              <ul class="header__lists">
+                <li class="header__list"><a class="header__link" href="/">Home</a>
+                </li>
+                <li class="header__list"><a class="header__link" href="/Mission.html">Mission</a>
+                </li>
+                <li class="header__list"><a class="header__link" href="/Writing-a-Module.html">Coding</a>
+                </li>
+                <li class="header__list"><a class="header__link" href="/Modules.html">Modules
+                    Overview</a> </li>
+                <li class="header__list"><a class="header__link" href="/Modules.html">Modules</a>
+                  <ul class="submenu">
+                    <li class="submenu__list"><a class="submenu__link" href="/MSSQL.html">MSSQL</a></li>
+                    <li class="submenu__list"><a class="submenu__link" href="/VMware.html">VMware</a></li>
+                    <li class="submenu__list"><a class="submenu__link" href="/WMI.html">WMI</a></li>
+                    <li class="submenu__list"><a class="submenu__link" href="/FileBrowse.html">FileBrowse</a></li>
+                    <li class="submenu__list"><a class="submenu__link" href="/PerfMon.html">PerfMon</a></li>
+                    <li class="submenu__list"><a class="submenu__link" href="/EventLog.html">EventLog</a></li>
+                    <li class="submenu__list"><a class="submenu__link" href="/Postgres.html">Postgres</a></li>
+                    <li class="submenu__list"><a class="submenu__link" href="/MySQL.html">MySQL</a></li>
+                    <li class="submenu__list"><a class="submenu__link" href="/AWS.html">AWS</a></li>
+                  </ul>
+                </li>
+                <li class="header__list"><a class="header__link" href="/Repos.html">Repos</a>
+                </li>
+                <li class="header__list"><a class="header__link" href="/News.html">News</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="header__overlay"></div>
+          </div>
+        </div>
+      </header>
+      <!-- Header End-->
+      <!-- Main section-->
+      <main class="main">
+        <section class="main-page">
+          <div class="container">
+            <h1> Download EventLog module</h1>
+            <br>
+            <p>Download the module and modify&nbsp;<b>ROOT_UNCstub.ps1.</b>.
+              Contribute more on <a href="https://github.com/tzimie/BellModules"
+                target="_blank">Github.</a><br>
+            </p>
+            <a class="btn btn-primary btn-margin" href="https://actionatdistance.com/EventLog.zip">Download
+              ZIP</a>
+            <p>You will also need one of the&nbsp;<b>login.ps1</b> files, if you
+              don't have one already:</p>
+            <ul>
+              <li><a href="https://actionatdistance.com/loginDummy.zip">loginDummy.zip
+                  </a>is a stub, it accepts any login with a password "root"</li>
+              <li><a href="https://actionatdistance.com/loginAD.zip">loginAD.zip</a>
+                checks user credentials in AD system, groups are always 'RO;RW'</li>
+              <li><a href="https://actionatdistance.com/loginADext.zip">loginADext.zip</a>
+                checks what AD groups user belongs to, requires additional
+                cmdlet Get-ADPrincipalGroupMembership to be installed on a
+                server. Edit AD groups names - they are different in every
+                company</li>
+            </ul>
+            <p> Audit file, audit.ps1 - is available in 3 different sample
+              versions:</p>
+            <ul>
+              <li><a href="https://actionatdistance.com/auditNull.zip">auditNull.zip</a>
+                - blank audit, does nothing</li>
+              <li><a href="https://actionatdistance.com/auditFile.zip">auditFile.zip</a>
+                - appends to <b>bell.log</b> in HOMEPATH of a service account
+                used (may be you would like to change the directory?)</li>
+              <li><a href="https://actionatdistance.com/auditTable.zip">auditTable.zip</a>
+                - logs to a table (MSSQL). Replace target server name and
+                database name. Execute <b>audit.sql </b>before using to create
+                an audit table and procedure</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+      <!-- Main section End-->
+      <!-- Footer section-->
+      <footer class="footer">
+        <div class="container">
+          <p>We are inviting new contributors and <a href="#" target="_blank" rel="nofollow">module
+              creators</a></p>
+        </div>
+      </footer>
+    </div>
+    <script>
+			if (!('IntersectionObserver' in window)) {
+				var script = document.createElement("script");
+				script.src = "https://raw.githubusercontent.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js";
+				document.getElementsByTagName('head')[0].appendChild(script);
+			}
+		</script>
+    <script src="./js/vendor.js?v=1685716268513"></script>
+    <script src="./js/main.js?v=1685716268513"></script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-42ZTBP78H2"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-42ZTBP78H2');
+</script> </body>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+</html>
